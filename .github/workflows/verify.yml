@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+# Devan Cantrell Addison-Turner, ORCID 0000-0002-2511-3680
+# Department of Civil and Environmental Engineering, Stanford University
+#
+# From the reproduction package for "An optically independent administrative
+# reference for validating built-surface products, and the tree-canopy bias it
+# reveals", a manuscript prepared for GIScience & Remote Sensing. Not yet
+# published; cite the repository until it is. Citation metadata: CITATION.cff.
+#
+# https://github.com/devanaddisonturner/Canopy-Bias-Nevada
+# Code MIT, released data CC0 1.0.
+# ---------------------------------------------------------------------------
+# Runs the three gates on every push and pull request.
+#
+# The package's central claim is that 522 assertions reproduce every table,
+# figure and quoted value from the released data. A claim like that is worth
+# more when a machine other than the author's re-checks it on every commit,
+# which is what this does.
+#
+# poppler-utils is needed because two checks read the rendered PDF: the layout
+# checks, and the rendered-against-source check that catches a document rebuilt
+# without being reconverted.
+#
+# Node is deliberately NOT installed. It is needed only to rebuild the
+# manuscript .docx, never to verify a number.
+
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    # The README claims Python 3.11 or newer. Running all three keeps that claim
+    # true rather than true on the day it was written. 3.10 is deliberately
+    # absent: pandas 3.0 declares Requires-Python >=3.11, so it cannot install.
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install poppler-utils
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Install pinned dependencies
+        run: pip install -r requirements.txt
+
+      - name: Numeric harness
+        run: python3 make_tables.py
+
+      - name: Layout checks
+        run: python3 check_layout.py
+
+      - name: Colour-vision checks
+        run: python3 check_colours.py
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Independent R reimplementation
+        run: Rscript verify_in_r.R
+
+      - name: Harness self-test
+        run: python3 test_harness.py
+
+      # Regenerating the figures and re-running the harness proves the figure
+      # scripts still produce the shipped images. If a matplotlib upgrade moved
+      # a pixel, embedded_figures_are_current() fails here rather than silently
+      # in someone's reuse. Last runs as it overwrites the figure files.
+      - name: Figures regenerate identically
+        run: |
+          python3 make_figure_studyarea.py
+          python3 make_figure_schematic.py
+          python3 make_figure_matched_parcels.py
+          python3 make_figure_divergence.py
+          python3 make_graphical_abstract.py
+          python3 make_tables.py
