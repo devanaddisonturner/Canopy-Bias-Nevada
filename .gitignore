@@ -1,0 +1,15 @@
+# Build and conversion products. Everything here is regenerated from the
+# sources in this repository, so none of it is tracked.
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Working outputs the harness and the figure scripts write.
+table*.csv
+/tmp/
+
+# Deliberately NOT ignored: the rendered manuscript .docx and .pdf, the figure
+# PNG/TIF/PDF files and the released CSVs. They are the record of what was
+# submitted, and the harness checks the rendered documents against their
+# sources, which it cannot do if they are absent.

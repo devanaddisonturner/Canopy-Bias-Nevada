@@ -1,0 +1,58 @@
+county,county_forest_pct,ghsl_built_growth_2000_2020_ha,pct_growth_outside_nlcd_developed,pct_growth_outside_and_forested
+Imperial,0.0,637,15.0,0.0
+Inyo,0.5,84,29.1,0.1
+Kings,1.4,781,26.7,0.5
+San Bernardino,1.5,9792,12.4,0.2
+San Francisco,2.2,89,10.2,3.0
+Merced,2.8,1301,34.2,0.6
+Riverside,2.9,12850,9.6,0.1
+Sacramento,3.8,3871,8.8,0.2
+Kern,6.5,4331,17.2,0.2
+Yolo,6.7,711,20.4,0.5
+Solano,7.5,1140,18.4,0.5
+San Joaquin,7.7,2886,18.7,1.0
+Orange,8.0,2778,4.8,0.2
+Mono,8.4,155,27.9,3.5
+San Diego,8.9,7067,14.2,0.5
+Stanislaus,8.9,1960,25.9,1.4
+San Benito,10.5,291,38.7,1.6
+Los Angeles,11.5,6189,13.7,0.7
+Sutter,12.2,411,30.8,2.5
+San Luis Obispo,12.5,1199,32.7,3.5
+Alameda,13.4,1377,10.5,1.3
+Contra Costa,14.5,2316,10.6,1.2
+Colusa,15.2,165,48.3,1.8
+Modoc,15.4,40,65.2,1.1
+Fresno,18.9,3261,19.2,0.5
+Ventura,20.0,2061,19.6,0.6
+Lassen,21.7,140,41.0,1.1
+Monterey,22.8,1080,23.6,4.7
+Santa Barbara,23.0,1161,21.4,2.1
+Glenn,23.3,201,56.2,2.1
+Madera,23.9,756,39.7,1.5
+Marin,27.3,393,17.9,5.2
+Tulare,27.8,2388,28.0,0.9
+Santa Clara,29.6,1626,13.4,2.1
+Tehama,29.8,338,53.2,3.1
+Amador,32.8,203,47.7,7.3
+San Mateo,34.7,584,12.6,5.2
+Yuba,35.2,409,31.3,3.4
+Napa,35.5,510,27.2,4.9
+Calaveras,37.1,356,52.9,5.5
+Mariposa,39.6,114,72.3,10.7
+Sonoma,42.2,1339,27.6,4.9
+Butte,44.2,1006,33.8,4.6
+Tuolumne,47.7,358,54.1,14.4
+Lake,48.5,303,33.3,5.2
+Placer,54.0,2280,17.2,2.5
+Santa Cruz,55.2,552,32.4,15.1
+El Dorado,56.8,1149,30.5,5.4
+Nevada,57.3,528,46.2,16.3
+Siskiyou,59.1,156,55.3,8.7
+Shasta,60.6,791,35.9,4.9
+Sierra,63.9,20,52.6,8.7
+Mendocino,66.3,303,51.0,16.1
+Plumas,66.4,124,42.4,8.8
+Humboldt,72.8,324,33.0,13.6
+Del Norte,73.9,57,34.0,15.5
+Trinity,82.3,46,60.3,29.0

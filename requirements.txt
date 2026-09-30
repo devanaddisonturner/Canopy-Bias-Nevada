@@ -1,0 +1,40 @@
+# Python dependencies for the canopy-bias reproduction package.
+#
+# Versions are the ones the released results were produced with, pinned rather
+# than left open because the package's claim is exact reproduction of 522
+# assertions, several of them to four decimal places.
+#
+# The pinning is measured, not precautionary. Run under pandas 2.2.3 instead of
+# 3.0.2, five values stop reproducing: qcut resolves a tie differently, one
+# parcel moves between deciles, the smallest decile goes from 2,189 parcels to
+# 2,188, and the decile 7 and 8 statistics shift with it. make_tables.py detects
+# the mismatch before printing any number and says so, so a reader never has to
+# work that out from five confusing numeric failures.
+#
+#   pip install -r requirements.txt
+#
+# Python 3.11 or newer, and that floor is pandas': pandas 3.0 declares
+# Requires-Python >=3.11, so 3.10 cannot install this file at all. Tested on
+# 3.11, 3.12 and 3.13, all of which run the full harness to the same 522
+# assertions; CI runs all three on every push. 3.11 produced the released
+# results.
+#
+# Node is needed only to rebuild the manuscript .docx, not to verify the
+# numbers: `npm install docx` then `node build_manuscript.js`. Built with
+# Node v22.22.2.
+
+# Required. Without these nothing runs.
+numpy==2.4.4
+pandas==3.0.2
+
+# Required by the figure scripts and by check_colours.py.
+matplotlib==3.10.9
+pillow==12.2.0
+
+# Optional, and the harness skips cleanly without them, but two checks then do
+# not run and the assertion count falls from 522 to 517: the logit comparison
+# in Section 2.4 and the Mann-Whitney test behind Section 3.6's footprint
+# validation. The run reports which are absent and exits non-zero unless
+# --allow-missing is given.
+scipy==1.17.1
+statsmodels==0.15.0

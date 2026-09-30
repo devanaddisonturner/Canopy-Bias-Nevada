@@ -1,0 +1,94 @@
+cff-version: 1.2.0
+message: >-
+  Cite this repository, by its Zenodo version DOI, when what you used was the data
+  or the code. If you are citing the argument, the method or a result, cite the
+  paper instead: "An optically independent administrative reference for validating
+  built-surface products, and the tree-canopy bias it reveals" by Devan Cantrell
+  Addison-Turner, prepared for GIScience & Remote Sensing. The paper is not yet
+  published, so it is deliberately not set as preferred-citation here; see the
+  comment below the keywords for why, and the README for both citation forms.
+title: "An optically independent administrative reference for validating built-surface products, and the tree-canopy bias it reveals"
+abstract: >-
+  A validation reference for built-surface products constructed from
+  administrative property records rather than imagery. Assessor floor area
+  divided by storey count, plus the recorded garage, summed over the parcels in
+  a 30 m cell and taken as a share of cell area, gives a lower bound on the
+  impervious fraction that cell holds. Because no step uses imagery, the bound
+  cannot inherit the occlusion it is used to detect. Across 21,931 parcels in
+  Nevada County, California, closed canopy is associated with 18 to 22
+  percentage points less measured NLCD impervious surface than open ground.
+type: dataset
+authors:
+  - family-names: "Addison-Turner"
+    given-names: "Devan Cantrell"
+    email: "daddisonturner@stanford.edu"
+    orcid: "https://orcid.org/0000-0002-2511-3680"
+    affiliation: "Department of Civil and Environmental Engineering, Stanford University"
+    city: "Stanford"
+    region: "California"
+    country: "US"
+repository-code: "https://github.com/devanaddisonturner/Canopy-Bias-Nevada"
+
+# `version` and `date-released` are here because without them the formatted
+# citation has no year. That was the state of this file until 29 September 2026:
+# GitHub's widget rendered "Addison-Turner D.C. An optically independent
+# administrative reference ... URL: ..." with nothing datable in it, which is not a
+# citation anyone can use in a reference list.
+#
+# Both are set at deposit time and must match the Zenodo release. Update them when
+# the deposit is cut; `make_tables.py` refuses a date in the future, so a forgotten
+# update fails rather than publishing a date that has not happened.
+version: "1.0.0"
+date-released: "2026-09-30"
+keywords:
+  - "impervious surface"
+  - "accuracy assessment"
+  - "tree canopy"
+  - "cadastral and assessor data"
+  - "NLCD"
+  - "validation reference"
+license: MIT
+license-url: "https://github.com/devanaddisonturner/Canopy-Bias-Nevada/blob/main/LICENSE"
+
+# THE PAPER THIS REPOSITORY ACCOMPANIES, AND WHY IT IS NOT preferred-citation YET
+#
+# GitHub renders `preferred-citation` INSTEAD OF the top-level entry when one is
+# present; its own documentation says so. So a preferred-citation here would make
+# the "Cite this repository" button show an unpublished manuscript carrying no DOI,
+# no URL and no version: a citation with nothing a reader can resolve. It would
+# also hide the Zenodo DOI, which lives on the top-level entry, from the one place
+# a visitor looks for it.
+#
+# Until the paper is published, the button therefore shows the REPOSITORY, which is
+# the thing a visitor actually has in front of them and can resolve. The README
+# tells readers to cite the paper when they are citing the argument, and gives both
+# forms. The paper's details are kept here, commented out, so that restoring them is
+# an uncommenting rather than a rewrite:
+#
+# preferred-citation:
+#   type: article                 # `unpublished` until it is accepted
+#   title: "An optically independent administrative reference for validating built-surface products, and the tree-canopy bias it reveals"
+#   authors:
+#     - family-names: "Addison-Turner"
+#       given-names: "Devan Cantrell"
+#       email: "daddisonturner@stanford.edu"
+#       orcid: "https://orcid.org/0000-0002-2511-3680"
+#       affiliation: "Department of Civil and Environmental Engineering, Stanford University"
+#   year: 2026
+#   journal: "GIScience & Remote Sensing"
+#   doi: 10.xxxx/xxxxx            # the ARTICLE doi, not the Zenodo one
+#
+# ON ACCEPTANCE: uncomment the block, fill in the journal, volume, issue, pages and
+# the article DOI, and delete the `type: article` comment. At that point the paper
+# is resolvable and citing it from the button is both correct and useful.
+# make_tables.py checks the states against each other, so this cannot be forgotten
+# quietly: once the manuscript's DOI placeholder is gone, the harness fails until
+# this file names the published article.
+
+# The datasets in this repository are separately dedicated to the public domain
+# under CC0 1.0; see the second half of LICENSE.
+#
+# TODO at release: add the Zenodo DOI here once the deposit exists. Left absent
+# rather than guessed, because a wrong DOI is worse than a missing one and this
+# project has already been bitten by a concept-versus-version DOI mix-up.
+# doi: 10.5281/zenodo.XXXXXXX

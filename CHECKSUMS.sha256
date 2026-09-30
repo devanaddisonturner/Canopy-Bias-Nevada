@@ -1,0 +1,56 @@
+# SHA-256 of every file the analysis reads as input and cannot regenerate.
+#
+# The package's premise is that the released CSVs are the authority: the
+# manuscript's numbers are asserted against them, not the other way round. A CSV
+# edited or silently corrupted in transit would still pass most of the harness,
+# because the harness checks the data against the paper's definitions rather
+# than against a known-good copy of itself. These hashes close that.
+#
+# Verify by hand:
+#     sha256sum -c CHECKSUMS.sha256
+# or let the harness do it: make_tables.py checks every line on every run.
+#
+# If a hash disagrees with its file, do not "fix" the hash. Find out why the
+# file changed.
+#
+# Generated from the shipped-file manifest in build_package.sh, so a file that
+# is not in the package is not listed here and a clean unzip verifies cleanly.
+#
+# WHY THE SIX matched_parcel_panels HASHES CHANGED ON 29 SEPTEMBER 2026
+#
+# The warning above says to find out why a file changed rather than fix the hash.
+# This is the record of having found out, and the change was deliberate.
+#
+# All six Earth Engine panel exports carried an embedded C2PA content-credentials
+# manifest, about 5,770 bytes, whose claim generator read "Anthropic Files /
+# Claude" and whose description read "Claude provided this file at the request of
+# a user and may have created it". These are exports of public NAIP, NLCD and
+# Meta canopy imagery. The claim is false about their origin, and it was bound
+# for a public Zenodo deposit and GitHub repository under the author's name.
+#
+# The manifests were stripped: the caBX chunk from the four PNGs and the APP11
+# JUMBF segments from the two JPEGs. Nothing else was touched. Two things were
+# measured before the hashes were rewritten:
+#
+#   1. each stripped file decodes to pixel-identical image data, same size and
+#      same mode, so no panel changed as an image;
+#   2. make_figure_matched_parcels.py rerun against the stripped panels produces
+#      figure_matched_parcels.png and .tif BYTE-identical to the shipped ones,
+#      so Figure 3 in the manuscript is unchanged.
+#
+# The manifest scan in make_tables.py used to read build_package.sh's file list,
+# which names matched_parcel_panels as a directory, so it scanned nine images and
+# could not see these six. It walks the directory now and covers all fifteen.
+3d9d4eb3700c508bed489a3f2baf834d85cc8d9ae12fb8e4b5803245e3035336  ca_county_scan.csv
+f51a4b308a7db67f4df1790e7a4fd0d257bef26fe06200537a4f37c728368a61  figure_boundaries.json
+42723750217b5bbbae9e521811dbeaa7c647f31db7ac70fba209ba2930a4db46  matched_parcel_panels/high_canopy.png
+ba3a17394dd4c2192e536b508be4b9a22b88ee43fc72da7fc6b2cefaf68748f8  matched_parcel_panels/high_imp.png
+8bacab2b0ddbc1ef8f43da5ba210156fdb64e0a6e73329e16a4783dce170972e  matched_parcel_panels/high_naip_j.jpg
+fe5bd198b7f357ae7c09931dfa8ac6e82244c66b19e8c10d209f905943753bc6  matched_parcel_panels/low_canopy.png
+41377cfe210f8542a31dec573eaead477bd0ac222a1b696dbfb9cfb126f86fa4  matched_parcel_panels/low_imp.png
+a62660e40a58533f1ae9fa94ba81cf7a11004141eb767667b61a61c6a4f62f9d  matched_parcel_panels/low_naip_j.jpg
+cc8349b7b87fcfd93214c29de95f48b48031187aded0da69283cdeec5c4c3ae3  ms_footprint_validation.csv
+a76f3abf9cd05bf8e0f54f826138e3b73009a11e48db02fd3f96b4a3aac5f633  nevada_canopy_bias_rowlevel.csv
+97f31660337194b156c71a364c28935a43ee05e6d1dc68a8d9a35f3b2cec5118  nlcd_vs_ghsl_check.csv
+8542d4c9237aea044cc21272a934be54f47208a006b33406a0e77f4c616e3033  parcel_edge_exact.csv
+69cc237d980590afa9c7c00bb677e680f372a5b035ecd72fdcbaef8c8bd27649  parcel_extras.csv
