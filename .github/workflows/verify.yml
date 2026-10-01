@@ -99,3 +99,43 @@ jobs:
           python3 make_figure_divergence.py
           python3 make_graphical_abstract.py
           python3 make_tables.py
+
+      # Diagnostic, added 30 September 2026. The regenerated Figure 1 matches
+      # the embedded copy on 3.12 and not on 3.11 or 3.13, and it matches under
+      # all three interpreters on the author's machine, so nothing about Python
+      # explains it. Three hypotheses were proposed and all three were wrong: a
+      # missing wheel, GitHub's ubuntu-latest migration, and a missing Liberation
+      # Serif. This prints what actually differs. Remove it once that is known.
+      - name: Diagnose the figure difference
+        if: always()
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          import io, zipfile
+          import numpy as np
+          from PIL import Image
+          import matplotlib, PIL, numpy
+          from matplotlib import font_manager
+          Image.MAX_IMAGE_PIXELS = None
+          disk = Image.open('figure_studyarea.png').convert('RGB')
+          print('on disk :', disk.size)
+          z = zipfile.ZipFile('canopy_bias_manuscript_GIScienceRS.docx')
+          a = np.asarray(disk, dtype=int)
+          for n in z.namelist():
+              if not (n.startswith('word/media/') and n.lower().endswith('.png')):
+                  continue
+              im = Image.open(io.BytesIO(z.read(n))).convert('RGB')
+              if im.size != disk.size:
+                  continue
+              d = np.abs(np.asarray(im, dtype=int) - a)
+              m = d.sum(axis=2) > 0
+              print('%s: %d of %d pixels differ, max channel diff %d'
+                    % (n, int(m.sum()), a.shape[0] * a.shape[1], int(d.max())))
+              if m.any():
+                  ys, xs = np.where(m)
+                  print('   bbox  x %d-%d   y %d-%d' % (xs.min(), xs.max(), ys.min(), ys.max()))
+          print('matplotlib', matplotlib.__version__)
+          print('pillow', PIL.__version__, 'numpy', numpy.__version__)
+          print('serif resolves to:', font_manager.findfont(
+              font_manager.FontProperties(family=['Liberation Serif', 'DejaVu Serif'])))
+          PY
