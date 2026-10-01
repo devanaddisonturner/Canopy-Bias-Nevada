@@ -33,7 +33,12 @@ on:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    # Pinned rather than ubuntu-latest. On 30 September 2026 a run under
+    # ubuntu-latest failed on 3.11 and 3.13 and passed on 3.12, which no Python
+    # difference explains; GitHub was mid-migration of that label and the jobs
+    # did not all land on the same image. A package whose claim is exact
+    # reproduction should name its environment rather than let it drift.
+    runs-on: ubuntu-24.04
     # The README claims Python 3.11 or newer. Running all three keeps that claim
     # true rather than true on the day it was written. 3.10 is deliberately
     # absent: pandas 3.0 declares Requires-Python >=3.11, so it cannot install.
@@ -48,8 +53,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install poppler-utils
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      # fonts-liberation is not optional. Every figure script asks for
+      # Liberation Serif, metric-compatible with the manuscript's Times New
+      # Roman, and falls back to DejaVu Serif when it is absent. The fallback is
+      # silent and it moves every glyph: forcing it changes 701,620 of Figure 1's
+      # 13,246,905 pixels, which is enough for embedded_figures_are_current() to
+      # call the manuscript's embedded figure stale. That is what failed here on
+      # 30 September 2026, and it had never been seen locally because LibreOffice
+      # installs this font as a dependency.
+      - name: Install poppler-utils and the Liberation fonts
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils fonts-liberation
 
       - name: Install pinned dependencies
         run: pip install -r requirements.txt
