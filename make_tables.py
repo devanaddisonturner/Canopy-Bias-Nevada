@@ -3789,7 +3789,8 @@ def citation_is_complete_and_not_overclaiming():
     THE PART THAT MATTERS MOST IS THE OVERCLAIM GUARD. A `preferred-citation` with
     `type: article` and a `journal:` key renders, in that widget and in every
     harvester downstream of it, a formatted citation asserting the paper is
-    published in that journal. The paper has not been submitted. Writing the venue
+    published in that journal. The paper was submitted on 30 September 2026 and is
+    not accepted, so that assertion would be false today. Writing the venue
     into `journal:` at preparation time and forgetting to revisit it is the obvious
     way to publish a false citation from a file nobody rereads, so the two states
     are held against each other here:

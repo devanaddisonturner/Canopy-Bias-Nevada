@@ -183,17 +183,25 @@ count and the archive READMEs drifted apart in the first place.
 
 ## Required before you can submit
 
-**Zero. The DOI is in.**
+**Zero, and the manuscript was submitted to GIScience & Remote Sensing on
+30 September 2026.** Nothing on this list was outstanding at that point.
 
 - ~~**Deposit the data in Zenodo and get the DOI.**~~ Closed on 30 September
   2026. The version DOI **10.5281/zenodo.23072749** was reserved before the
   files were built, so the archive deposited at it states its own DOI rather
   than saying one is still to be assigned. It is in the Data availability
-  statement, CITATION.cff and the README, and the manuscript now carries no
-  bracketed placeholder. The journal's requirement, *"Data must be deposited in
-  a recognized FAIR-aligned data repository prior to or at the time of
-  submission"*, is met, and the submission form's DOI field can be filled from
-  the same string. Reviewers may still request the reviewer URL.
+  statement, CITATION.cff and the README, and the submitted manuscript carries
+  no bracketed placeholder. The journal's requirement, *"Data must be deposited
+  in a recognized FAIR-aligned data repository prior to or at the time of
+  submission"*, is met. Reviewers may still request the reviewer URL.
+
+**Two things the submission does not settle, and both are now post-submission
+rather than pre-submission questions.** The Funding statement names "The Heinz
+Foundations", which is not the formal name of any Heinz philanthropy; the
+candidates are The Heinz Endowments and the Heinz Family Foundation, and this is
+correctable at proof stage or by writing to the editorial office. And the
+article publishing charge, below, where the guidelines say waivers "may not be
+considered after submission".
 
 **Closed on 29 September, and listed here so this file is not read as a
 to-do list for work already done:**
