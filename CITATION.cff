@@ -88,7 +88,8 @@ license-url: "https://github.com/devanaddisonturner/Canopy-Bias-Nevada/blob/main
 # The datasets in this repository are separately dedicated to the public domain
 # under CC0 1.0; see the second half of LICENSE.
 #
-# TODO at release: add the Zenodo DOI here once the deposit exists. Left absent
-# rather than guessed, because a wrong DOI is worse than a missing one and this
-# project has already been bitten by a concept-versus-version DOI mix-up.
-# doi: 10.5281/zenodo.XXXXXXX
+# The Zenodo DOI below is the VERSION DOI for v1.0.0, reserved on 30 September
+# 2026 before the files were built, so that the archive at that DOI states its own
+# DOI. It is not the concept DOI: a concept DOI resolves to whichever version is
+# newest, which is the wrong target for a citation of the deposit someone ran.
+doi: 10.5281/zenodo.23072749

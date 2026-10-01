@@ -183,14 +183,17 @@ count and the archive READMEs drifted apart in the first place.
 
 ## Required before you can submit
 
-**One item, down from three on 29 September.**
+**Zero. The DOI is in.**
 
-1. **Deposit the data in Zenodo and get the DOI.** This is not optional and
-   not deferrable: *"Data must be deposited in a recognized FAIR-aligned data
-   repository prior to or at the time of submission."* The submission form
-   asks for the DOI or a pre-reserved DOI, and reviewers may request the
-   reviewer URL. Insert the DOI into the Data availability statement, which
-   carries the only remaining placeholder in the manuscript.
+- ~~**Deposit the data in Zenodo and get the DOI.**~~ Closed on 30 September
+  2026. The version DOI **10.5281/zenodo.23072749** was reserved before the
+  files were built, so the archive deposited at it states its own DOI rather
+  than saying one is still to be assigned. It is in the Data availability
+  statement, CITATION.cff and the README, and the manuscript now carries no
+  bracketed placeholder. The journal's requirement, *"Data must be deposited in
+  a recognized FAIR-aligned data repository prior to or at the time of
+  submission"*, is met, and the submission form's DOI field can be filled from
+  the same string. Reviewers may still request the reviewer URL.
 
 **Closed on 29 September, and listed here so this file is not read as a
 to-do list for work already done:**

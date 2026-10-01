@@ -9,24 +9,25 @@ Editor in Chief: Prof. Jungho Im
 Assembled 30 September 2026
 
 =====================================================================
-NOT READY TO UPLOAD YET. ONE ITEM OUTSTANDING.
+THE DOI IS IN. NO PLACEHOLDER REMAINS IN THE MANUSCRIPT.
 =====================================================================
 
-The manuscript carries one bracketed placeholder, in the Data availability
-statement:
+The Data availability statement now reads "The dataset and code are deposited at
+https://doi.org/10.5281/zenodo.23072749." That VERSION DOI was reserved on
+30 September 2026 before these files were built, so the archive deposited at it
+states its own DOI rather than saying one is still to be assigned.
 
-  [Deposit in a FAIR-aligned repository such as Zenodo and insert the DOI here.]
-
-The journal's requirement is not deferrable: "Data must be deposited in a
-recognized FAIR-aligned data repository PRIOR TO OR AT THE TIME OF SUBMISSION."
-The submission form asks for the DOI or a pre-reserved DOI.
+The journal's requirement is met: "Data must be deposited in a recognized
+FAIR-aligned data repository PRIOR TO OR AT THE TIME OF SUBMISSION." Give the
+same string in the submission form's DOI field.
 
 Run this before uploading, and expect exit 0:
 
     python3 check_layout.py --submission
 
-It currently exits 1 and names the placeholder above. A manuscript submitted with
-"[insert the DOI here]" still in it is the kind of error no reviewer forgives.
+It exits 0 and reports "no bracketed placeholders remain". Run it anyway. A
+manuscript submitted with "[insert the DOI here]" still in it is the kind of
+error no reviewer forgives, and this is the check that catches a regression.
 
 WHAT TO UPLOAD, IN ORDER
 ------------------------
@@ -62,15 +63,17 @@ them. One file per slot, no choices to make.
 NOT IN THIS ZIP, ON PURPOSE
 ---------------------------
 The reproduction package, canopy_bias_reproduction_package.zip, 71 files. It is
-not a submission attachment: it is what gets DEPOSITED IN ZENODO, and the DOI the
-deposit returns is what fills the placeholder above. See GITHUB_AND_ZENODO.md
-inside that package for the steps.
+not a submission attachment: it is what gets DEPOSITED IN ZENODO, at the DOI
+already named above. It is also on GitHub at
+https://github.com/devanaddisonturner/Canopy-Bias-Nevada. See
+GITHUB_AND_ZENODO.md inside that package for the steps.
 
 BEFORE YOU UPLOAD
 -----------------
-1. Deposit in Zenodo, take the VERSION DOI (not the concept DOI), and put it in
-   four places: the manuscript's Data availability statement, CITATION.cff, the
-   README, and the submission form.
+1. Publish the Zenodo deposit if it is still a draft. The DOI is reserved rather
+   than registered until you press Publish, and a reserved DOI does not resolve.
+   Attach the rebuilt reproduction package, the one whose files name the DOI, not
+   a copy made before it existed. Give the same DOI in the submission form.
 2. Confirm which Heinz organisation funded the work. The Funding statement
    currently reads "The Heinz Foundations", which is not the formal name of any
    Heinz philanthropy. The two candidates are The Heinz Endowments and the Heinz

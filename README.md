@@ -640,7 +640,7 @@ actually ran:
 
 > Addison-Turner, D. C. (2026). *An optically independent administrative reference
 > for validating built-surface products, and the tree-canopy bias it reveals*
-> (version 1.0.0) [Data set and code]. Zenodo. https://doi.org/[version DOI]
+> (version 1.0.0) [Data set and code]. Zenodo. https://doi.org/10.5281/zenodo.23072749
 
 **What GitHub's "Cite this repository" button actually shows.** The repository
 entry above, in APA and BibTeX, with the version and the GitHub URL, and with the

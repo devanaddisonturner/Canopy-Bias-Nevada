@@ -142,10 +142,11 @@ once the repo is up and the DOI exists:
 
 ```
 [![verify](https://github.com/devanaddisonturner/Canopy-Bias-Nevada/actions/workflows/verify.yml/badge.svg)](https://github.com/devanaddisonturner/Canopy-Bias-Nevada/actions/workflows/verify.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23072749.svg)](https://doi.org/10.5281/zenodo.23072749)
 ```
 
-Replace `XXXXXXX` with the version DOI from step 4, not the concept DOI.
+That is the version DOI for v1.0.0, not the concept DOI. The badge image only
+resolves once the deposit is published; before that it renders as broken.
 
 ## 3. Deposit in Zenodo, reserving the DOI FIRST
 
@@ -195,28 +196,29 @@ been caught by once.
 lands on a different archive than the one the paper's numbers came from, which
 defeats the point of depositing.
 
-## 5. Put the DOI in four places, then rebuild and re-verify
+## 5. The DOI, now in six places
 
-Once you have the reserved DOI, it goes in all four and they must agree:
+Done on 30 September 2026. The version DOI **10.5281/zenodo.23072749** was
+reserved first and written in before anything was rebuilt, so every file in the
+archive at that DOI names it. The six places, recorded here so a later version
+can be done the same way:
 
-1. **`build_manuscript.js`**, the Data availability statement: replace the whole
-   bracketed placeholder, brackets included, with a sentence naming the DOI.
-   `check_layout.py --submission` fails until this is done and passes after.
-2. **`CITATION.cff`**: uncomment the `doi:` line near the foot of the file and put
-   the DOI on it.
-3. **`README.md`**: the "How to cite" section, where the repository citation shows
-   `https://doi.org/[version DOI]`.
-4. **The submission form**, which asks for it directly.
+1. **`build_manuscript.js`**, the Data availability statement, which now reads
+   "The dataset and code are deposited at https://doi.org/10.5281/zenodo.23072749."
+   `check_layout.py --submission` failed on the bracketed placeholder until this
+   was done and exits 0 now, reporting "no bracketed placeholders remain".
+2. **`CITATION.cff`**, the `doi:` line near the foot of the file, now uncommented.
+   Validated against CFF 1.2.0 with `cffconvert` afterwards.
+3. **`README.md`**, the "How to cite" section, where the repository citation now
+   resolves instead of showing a bracketed stand-in.
+4. **`SUBMISSION_CHECKLIST.md`**, under "Required before you can submit", now
+   "Zero. The DOI is in."
+5. **This file**, under "What is still blocking submission after this", the same.
+6. **`README_submission.txt`**, whose opening block told the author the package
+   was not ready to upload. It is the first thing read at submission time, so a
+   stale warning there is worse than no warning at all.
 
-Then two edits the harness will demand, because filling the DOI clears the last
-blocking item and two documents still say one is outstanding:
-
-5. **`SUBMISSION_CHECKLIST.md`**, the line under "Required before you can submit":
-   change `**One item, down from three on 29 September.**` to `**Zero.**` plus
-   whatever note you want.
-6. **This file**, the line under "What is still blocking submission after this":
-   change `**One, and it is what this document is for: the DOI itself.**` to
-   `**Zero.**`.
+The submission form asks for the DOI directly; give it the same string.
 
 Then rebuild, in this order, and expect a clean run:
 
@@ -250,10 +252,11 @@ change. Either reading is defensible and both are open licences.
 
 ## What is still blocking submission after this
 
-**One, and it is what this document is for: the DOI itself.** The Funding
-statement and the Acknowledgements were both written on 29 September, so the
-manuscript now carries a single bracketed placeholder, in the data availability
-statement, waiting for the DOI this guide produces.
+**Zero. The DOI is in.** The Funding statement and the Acknowledgements were
+written on 29 September, and the version DOI **10.5281/zenodo.23072749** was
+reserved on 30 September and written into the Data availability statement,
+CITATION.cff and the README before the files were built. The manuscript carries
+no bracketed placeholder, and `check_layout.py --submission` exits 0.
 
 One thing that is not a manuscript item and is still open: **the charge**. The APC
 is $3,565 plus VAT on an fully open access journal, **Stanford Libraries lists no
