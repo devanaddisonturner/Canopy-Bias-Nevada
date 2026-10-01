@@ -1,9 +1,18 @@
 # Canopy bias in built-surface products: reproduction package
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23072749.svg)](https://doi.org/10.5281/zenodo.23072749)
+
+**The archive at that DOI is the version of record.** It is what the manuscript's
+Data availability statement points at, and it cannot change. This repository is
+the working copy and may already differ from it: this badge and the date below
+were added after the deposit was published, so the two are not byte-identical
+even though both are labelled 1.0.0. Cite the DOI, not the repository, and if
+you are reproducing the results, download the archive rather than cloning.
+
 Nevada County, California. Everything needed to reproduce the results, plus the
 record of what was tried and rejected along the way.
 
-Last updated 2026-09-29.
+Last updated 2026-09-30.
 
 ## Start here
 
